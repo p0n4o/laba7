@@ -34,7 +34,7 @@ char * _last(char string[])
     if (pk == string) return string;
     return pk+1;
 }
-void squeeze (char s1[], char s2[]) {
+void squeeze (char s1[], const char s2[]) {
     int k, i, j;
 
     for (k = 0; s2[k] != '\0'; k++) {
@@ -53,6 +53,7 @@ int main(){
     }
 
     else {
+        printf("\n");
         char new[lenth] = "";
         char counts[30] = "1234567890";
         char* last;
@@ -73,10 +74,9 @@ int main(){
         istr = strtok(new, sep);
         while (istr != NULL) {
             for (int i = 0; i < strlen(istr); i++) {
-                if (istr[i] == '0' || istr[i] == '1' || istr[i] == '2' || istr[i] == '3' || istr[i] == '4' || istr[i] == '5' || istr[i] == '6' || istr[i] == '7' || istr[i] == '8' || istr[i] == '9') {
+                if (istr[i] >= 48 && istr[i] <= 57) {
                     squeeze(istr, counts);
                     puts(istr);
-                    printf("\n");
                 }
             }
             istr = strtok(NULL, sep);
