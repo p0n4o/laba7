@@ -3,12 +3,13 @@
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_GREEN   "\x1b[32m"
 #define lenth 300
-int treatment(char* stroke) {
+typedef enum { false, true } bool;
+bool treatment(char* stroke) {
     char str[lenth];
     strcpy(str, stroke);
     if ((strstr(str, ".") == NULL)) {
         printf(ANSI_COLOR_RED"Нет символа конца строки\n");
-        return 0;
+        return false;
     }
     strtok(str, ".");
     for (int i = 0; str[i] != '\0'; i++) {
@@ -18,10 +19,10 @@ int treatment(char* stroke) {
         } else if (str[i] == 32) {
         } else {
             printf(ANSI_COLOR_RED "В строке присутствуют недопустимые символы\n");
-            return 0;
+            return false;
         }
     }
-    return 1;
+    return true;
 }
 char * _last(char string[])
 {
@@ -48,7 +49,7 @@ int main(){
     char str [lenth];
     printf("Введите исходную строку:\n");
     fgets(str, lenth, stdin);
-    if (treatment(str) == 0){
+    if (treatment(str) == false){
         return 0;
     }
 
