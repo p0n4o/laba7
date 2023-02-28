@@ -12,14 +12,19 @@ bool treatment(char* stroke) {
         return false;
     }
     strtok(str, ".");
-    for (int i = 0; str[i] != '\0'; i++) {
-        if (str[i] >= 48 && str[i] <= 57) {
-        } else if (str[i] >= 65 && str[i] <= 90) {
-        } else if (str[i] >= 97 && str[i] <= 122) {
-        } else if (str[i] == 32) {
-        } else {
-            printf(ANSI_COLOR_RED "В строке присутствуют недопустимые символы\n");
-            return false;
+    if (strlen(str) == 2 && str[0] == '.'){
+        return true;
+    }
+    else{
+        for (int i = 0; str[i] != '\0'; i++) {
+            if (str[i] >= 48 && str[i] <= 57) {
+            } else if (str[i] >= 65 && str[i] <= 90) {
+            } else if (str[i] >= 97 && str[i] <= 122) {
+            } else if (str[i] == 32) {
+            } else {
+                printf(ANSI_COLOR_RED "В строке присутствуют недопустимые символы\n");
+                return false;
+            }
         }
     }
     return true;
@@ -67,14 +72,14 @@ int main(){
         last = _last(str);
         istr = strtok(str, sep);
         while (istr != NULL) {
-            wrd_count+=1;
-            if (k>30){
-                printf("Превышено количество слов в строке\n");
+            wrd_count ++;
+            if (wrd_count>30){
+                printf(ANSI_COLOR_RED "Превышено количество слов в строке\n");
                 return 0;
             }
             if (strlen(istr) > 10)
             {
-                printf("Превышено количество символов в слове\n");
+                printf(ANSI_COLOR_RED "Превышено количество символов в слове\n");
                 return 0;
             }
             if (strcmp(istr, last) != NULL) {
