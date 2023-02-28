@@ -60,12 +60,23 @@ int main(){
         char* last;
         char* istr;
         char str_copy[lenth];
+        int wrd_count = 0;
         strcpy(str_copy, str);
         strtok(str, ".");
         char sep[10] = " ";
         last = _last(str);
         istr = strtok(str, sep);
         while (istr != NULL) {
+            wrd_count+=1;
+            if (k>30){
+                printf("Превышено количество слов в строке\n");
+                return 0;
+            }
+            if (strlen(istr) > 10)
+            {
+                printf("Превышено количество символов в слове\n");
+                return 0;
+            }
             if (strcmp(istr, last) != NULL) {
                 strcat(new, sep);
                 strcat(new, istr);
