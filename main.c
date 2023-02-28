@@ -71,7 +71,7 @@ int main(){
         char sep[10] = " ";
         last = _last(str);
         istr = strtok(str, sep);
-        while (istr != NULL) {
+        while (istr != NULL){
             wrd_count ++;
             if (wrd_count>30){
                 printf(ANSI_COLOR_RED "Превышено количество слов в строке\n");
@@ -82,7 +82,7 @@ int main(){
                 printf(ANSI_COLOR_RED "Превышено количество символов в слове\n");
                 return 0;
             }
-            if (strcmp(istr, last) != NULL) {
+            if (strcmp(istr, last) != 0) {
                 strcat(new, sep);
                 strcat(new, istr);
             }
